@@ -10,6 +10,22 @@ config :smart_home, SmartHome.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+config :smart_home, SmartHome.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "postgres",
+  database: "smart_home_eventstore",
+  hostname: "localhost",
+  pool_size: 10
+
+config :smart_home, SmartHome.App,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: SmartHome.EventStore
+  ]
+
+config :smart_home, :pubsub, name: SmartHome.PubSub
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

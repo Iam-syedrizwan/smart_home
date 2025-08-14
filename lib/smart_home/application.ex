@@ -17,7 +17,8 @@ defmodule SmartHome.Application do
       # Start a worker by calling: SmartHome.Worker.start_link(arg)
       # {SmartHome.Worker, arg},
       # Start to serve requests, typically the last entry
-      SmartHomeWeb.Endpoint
+      SmartHomeWeb.Endpoint,
+      SmartHome.App
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
